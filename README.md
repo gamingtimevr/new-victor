@@ -6,7 +6,7 @@ Check the [wiki](https://github.com/kercre123/victor/wiki) for more information 
 
 ## Changes
 
-- The wiki includes a list of changes I made: [Changes I Made](https://github.com/kercre123/victor/wiki/Changes-I-Made)
+- This repository is a modified version of [wireOS,](github.com/os-vector/wire-os-victor) made by Wire (kercre123). RainbOS is baisicaly just a bunch of changes I personaly wanted, plus some cool rainbow and colorful animations.
 
 ## Building (Linux)
 
@@ -16,8 +16,8 @@ Check the [wiki](https://github.com/kercre123/victor/wiki) for more information 
 
 ```
 cd ~
-git clone --recurse-submodules https://github.com/os-vector/wire-os-victor
-cd wire-os-victor
+git clone --recurse-submodules https://github.com/gamingtimevr/new-victor
+cd new-victor
 ```
 
 2. Make sure you can run Docker as a normal user. This will probably involve:
@@ -49,7 +49,7 @@ cd ~/wire-os-victor
 
 ```
 cd ~
-git clone --recurse-submodules https://github.com/kercre123/victor -b snowboy
+git clone --recurse-submodules https://github.com/gamingtimevr/new-victor -b RainbOS
 cd victor
 git lfs install
 git lfs pull
@@ -100,5 +100,5 @@ echo 192.168.1.150 > robot_ip.txt
 3. Run:
 
 ```
-./build/deploy-d.sh
+./build/deploy-v.sh
 ```
