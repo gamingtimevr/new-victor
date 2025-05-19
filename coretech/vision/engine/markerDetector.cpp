@@ -188,6 +188,12 @@ Result MarkerDetector::Detect(const Image& inputImageGray, std::list<ObservedMar
   Embedded::FixedLengthList<Embedded::VisionMarker>& markers = _memory->_markers;
   const s32 maxMarkers = markers.get_maximumSize();
   
+  markers.set_size(maxMarkers);
+  for(s32 i=0; i<maxMarkers; i++) {
+    Embedded::Array<f32> newArray(3, 3, _memory->_ccmScratch);
+    markers[i].homography = newArray;
+  }
+  
   DEV_ASSERT(Util::IsFltGTZero(_params->fiducialThicknessFraction.x) &&
              Util::IsFltGTZero(_params->fiducialThicknessFraction.y),
              "MarkerDetector.Detect.FiducialThicknessFractionParameterNotInitialized");
@@ -196,16 +202,9 @@ Result MarkerDetector::Detect(const Image& inputImageGray, std::list<ObservedMar
   _params->SetComputeComponentMaxNumPixels(inputImageGray.GetNumRows(), inputImageGray.GetNumCols());
   
   // Victor markers are all light-on-dark
-  bool kDarkOnLightMode = false;
-  for (int i = 0; i < 2; ++i) {
-
-    markers.set_size(maxMarkers);
-    for(s32 i=0; i<maxMarkers; i++) {
-      Embedded::Array<f32> newArray(3, 3, _memory->_ccmScratch);
-      markers[i].homography = newArray;
-    }
-
-    const Result result = DetectFiducialMarkers(grayscaleImage,
+  const bool kDarkOnLightMode = false;
+  
+  const Result result = DetectFiducialMarkers(grayscaleImage,
                                               markers,
                                               *_params,
                                               kDarkOnLightMode,
@@ -222,7 +221,6 @@ Result MarkerDetector::Detect(const Image& inputImageGray, std::list<ObservedMar
 
   for(s32 i_marker = 0; i_marker < numMarkers; ++i_marker)
   {
-
     const Embedded::VisionMarker& crntMarker = _memory->_markers[i_marker];
     
     // Construct a basestation quad from an embedded one:
@@ -238,10 +236,8 @@ Result MarkerDetector::Detect(const Image& inputImageGray, std::list<ObservedMar
     observedMarkers.emplace_back(inputImageGray.GetTimestamp(),
                                  crntMarker.markerType,
                                  quad, _camera);
-    } // for(each marker)
+  } // for(each marker)
 
-    kDarkOnLightMode = true;
-  }
   
   return RESULT_OK;
 }
