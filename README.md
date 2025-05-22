@@ -1,12 +1,12 @@
-# victor
+# new-victor
 
-Welcome to `victor`. This is the home of the Anki Vector robot's source code. Original README: [README-orig.md](/README-orig.md)
+Welcome to `new-victor`. This is the home of the Anki Vector robot's source code, with no LFS. Original README: [README-orig.md](/README-orig.md)
 
 Check the [wiki](https://github.com/kercre123/victor/wiki) for more information about the leak, what we can do with this, and general Vector info.
 
 ## Changes
 
-- This repository is a modified version of [wireOS,](github.com/os-vector/wire-os-victor) made by Wire (kercre123). RainbOS is baisicaly just a bunch of changes I personaly wanted, plus some cool rainbow and colorful animations.
+- This repository is a modified version of [wireOS,](github.com/os-vector/wire-os-victor) made by Wire (kercre123). RainbOS is baisicaly just a bunch of changes I personaly wanted, plus some cool rainbow and colorful animations. This is my way of learning how to use Git and code.
 
 ## Building (Linux)
 
@@ -16,7 +16,7 @@ Check the [wiki](https://github.com/kercre123/victor/wiki) for more information 
 
 ```
 cd ~
-git clone --recurse-submodules https://github.com/gamingtimevr/new-victor
+git clone --recurse-submodules -b RainbOS https://github.com/gamingtimevr/new-victor
 cd new-victor
 ```
 
@@ -49,7 +49,7 @@ cd ~/wire-os-victor
 
 ```
 cd ~
-git clone --recurse-submodules https://github.com/gamingtimevr/new-victor -b RainbOS
+git clone --recurse-submodules -b RainbOS https://github.com/gamingtimevr/new-victor
 cd victor
 git lfs install
 git lfs pull
@@ -92,7 +92,7 @@ cd ~/wire-os-victor
 1. Echo your robot's IP address to robot_ip.txt (in the root of the victor repo):
 
 ```
-echo 192.168.1.150 > robot_ip.txt
+echo 192.168.1.18 > robot_ip.txt
 ```
 
 2. Copy your bot's SSH key to a file called `robot_sshkey` in the root of this repo.
