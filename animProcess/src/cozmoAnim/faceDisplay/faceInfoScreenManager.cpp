@@ -67,6 +67,7 @@
 
 // CHANGE THIS TO BE YOUR PROJECT'S STUFF
 const std::string OSProject = "RainbOS";
+const std::string OSVerName = "Alpha 0";
 const std::string OSBranch = "RainbOS";
 const std::string Creator = "By GamingTime";
 const std::string CreatorWebsite = "github.com/gamingtimevr";
@@ -553,7 +554,7 @@ void FaceInfoScreenManager::SetScreen(ScreenName screen)
     prevScreenWasMute = GetCurrScreenName() == ScreenName::ToggleMute;
   }
 
-  _currScreen = GetScreen(screen);
+  _currScreen = GetS/creen(screen);
 
   // If currScreen is null now, you probably haven't called Init yet!
   DEV_ASSERT(_currScreen != nullptr, "FaceInfoScreenManager.SetScreen.NullCurrScreen");
@@ -1472,6 +1473,7 @@ void FaceInfoScreenManager::DrawBuildInfo() {
   auto *osstate = OSState::getInstance();
   const std::string osProject = "OS: " + OSProject;
   const std::string branch = "BRANCH: " + OSBranch;
+  const std::string osVerName = "BUILD: " + OSVerName;
   const std::string osVer = "VER: " + osstate->GetOSBuildVersion();
   const std::string sha = "SHA: " + osstate->GetBuildSha();
   const std::string creator = Creator;
