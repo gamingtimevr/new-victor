@@ -102,3 +102,19 @@ echo 192.168.1.18 > robot_ip.txt
 ```
 ./build/deploy-v.sh
 ```
+## Tips & Tricks
+
+Cleaning is often important after building new-victor multiple times. It cleans cashed files so that you can make sure you are fully building the repository from scratch. Sometimes, changes my not show up. When that happens, this script comes to the rescue.
+To run the Clean script, run:
+
+```
+cd new-victor
+./build/clean.sh
+```
+
+To run the Clean, Build, Deploy script, run:
+
+```
+cd new-victor
+./build/cbd.sh
+```
